@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
+// store
+import useHandleStore from '@/store/handleStore';
+
 const Popup = ({ isOpen, onClose }: any) => {
+  const {isPopUpEditUser} = useHandleStore((state) => state)
+  const handleToggles = useHandleStore((state) => state.handleToggles)
+
   const [formData, setFormData] = useState({
     name: '',
     category: '',
@@ -22,15 +28,15 @@ const Popup = ({ isOpen, onClose }: any) => {
     e.preventDefault();
     // Lakukan sesuatu dengan data yang diisi di form
     console.log(formData);
-    onClose(); // Tutup popup setelah submit
+    handleToggles("isPopUpEditUser"); // Tutup popup setelah submit
   };
 
-  if (!isOpen) {
+  if (!isPopUpEditUser) {
     return null;
   }
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 overflow-y-auto">
       <div className="bg-white p-6 rounded-lg shadow-md w-96">
         <h2 className="text-xl text-center font-bold mb-4">Form Data</h2>
         <form onSubmit={handleSubmit}>
@@ -122,7 +128,7 @@ const Popup = ({ isOpen, onClose }: any) => {
           <div className="flex justify-evenly mt-4">
             <button
               type="button"
-              onClick={onClose}
+              onClick={() => { handleToggles("isPopUpEditUser");}}
               className="mr-2 px-4 py-2 border rounded-md"
             >
               Cancel
