@@ -39,6 +39,24 @@ export const dummyDataTable: any = [
     office: "default",
     status: true,
   },
+  {
+    id: 4,
+    name: "David",
+    email: "email",
+    phone: +6282345283,
+    category: "Author",
+    office: "default",
+    status: true,
+  },
+  {
+    id: 5,
+    name: "asep",
+    email: "emailku",
+    phone: +628234534283,
+    category: "Author",
+    office: "default",
+    status: true,
+  },
 ];
 
 
