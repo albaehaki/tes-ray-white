@@ -46,10 +46,11 @@ const Popup = ({ isOpen, onClose }: any) => {
   }
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 overflow-y-auto">
+    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 ">
 
+      
+      <div className="bg-white p-6 rounded-lg shadow-md w-96 relative">
       <button><XCircleIcon onClick={() =>  handleToggles("isPopUpEditUser")} className="w-6 h-6 absolute right-2 top-2" /></button>
-      <div className="bg-white p-6 rounded-lg shadow-md w-96">
         <h2
           className={`text-xl text-center font-bold mb-4 ${
             editData !== null ? `` : ``

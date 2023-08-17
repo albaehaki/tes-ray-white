@@ -1,7 +1,32 @@
 import React from 'react';
-import { UserCircleIcon, HomeIcon, InboxIcon, BookmarkIcon, DocumentTextIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon, HomeIcon, InboxIcon, BookmarkIcon, DocumentTextIcon, ChevronDownIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 
 const ContentSidebar: React.FC = () => {
+  const pathname = usePathname()
+  const listMenuItems = [
+    {
+      id: 1,
+      name: 'Dasboard',
+      link: "/dasboard",
+      icon: <HomeIcon className="w-6 h-6" />
+    },
+    {
+      id: 2,
+      name: 'User Management',
+      link: "/user-management",
+      icon: <UserGroupIcon className="w-6 h-6" />
+    },
+    {
+      id: 3,
+      name: 'News',
+      link: "/news",
+      icon: <DocumentTextIcon className="w-6 h-6" />,
+      icon2: <ChevronDownIcon className="w-6 h-6 justify-self-end absolute right-3" />
+    },
+  ];
+  console.log(pathname)
   return (
     <div className="flex flex-col bg-gray-800 text-white h-screen">
       {/* Profile */}
@@ -16,19 +41,11 @@ const ContentSidebar: React.FC = () => {
       {/* Menu List */}
       <div className="mt-8">
         <ul className="space-y-2">
-          <li className="flex items-center space-x-2 py-3 px-6">
-            <HomeIcon className="w-6 h-6" />
-            <span className="text-xs">Dasboard</span>
-          </li>
-          <li className="flex items-center space-x-2 py-3 px-6">
-            <BookmarkIcon className="w-6 h-6" />
-            <span className="text-xs">User Management</span>
-          </li>
-          <li className="flex items-center space-x-2 relative py-3 px-6">
-            <DocumentTextIcon className="w-6 h-6" />
-            <span className="text-xs ">News</span>
-            <ChevronDownIcon className="w-6 h-6 justify-self-end absolute right-3" />
-          </li>
+          {listMenuItems.map((item: any) =>(<><Link href={item.link} className={`flex items-center space-x-2 py-3 px-6 ${pathname === item.link? `bg-gray-900 border-l-4 border-[#fcffe0]` : ``}`}>
+            {item.icon}
+            <span className="text-xs">{item.name}</span>
+            {item.icon2}
+          </Link></>))}
           {/* <li className="flex items-center space-x-2 relative py-3 px-14">
             
             <span className="text-xs ">Add News</span>

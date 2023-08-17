@@ -9,7 +9,7 @@ import { dummyCategoryUser, dummyDataTable } from "@/store/dummyDaya";
 
 const TableLargeDisplay = () => {
   const handleToggles = useHandleStore((state) => state.handleToggles);
-  const category = useTableStore((state) => state.categoryTable);
+  const { categoryTable } = useTableStore((state) => state);
   const addEditData = useTableStore((state) => state.addEditData);
   return (
     <div className=" hidden sm:block">
@@ -18,10 +18,10 @@ const TableLargeDisplay = () => {
           <tr>
             <th className="px-2 py-3">No</th>
             <th className="px-2 py-3">Name</th>
-            {category === "Advisor" ||
-            "Admin Office" ||
-            "Principal" ||
-            "Principal LMI" ? (
+            {categoryTable === "Advisor" ||
+            categoryTable === "Admin Office" ||
+            categoryTable === "Principal" ||
+            categoryTable === "Principal LMI" ? (
               <th className="px-2 py-3">Office</th>
             ) : (
               ``
@@ -32,7 +32,7 @@ const TableLargeDisplay = () => {
           </tr>
         </thead>
         {dummyDataTable
-          .filter((data: any) => data.category == category)
+          .filter((data: any) => data.category == categoryTable)
           .map((data: any, i: number) => (
             <tbody
               key={data.id}
@@ -41,10 +41,10 @@ const TableLargeDisplay = () => {
               <tr key={data.id}>
                 <td className="px-2 py-3">{data.id}</td>
                 <td className="px-2 py-3">{data.name}</td>
-                {category === "Advisor" ||
-                "Admin Office" ||
-                "Principal" ||
-                "Principal LMI" ? (
+                {categoryTable === "Advisor" ||
+                categoryTable === "Admin Office" ||
+                categoryTable === "Principal" ||
+                categoryTable === "Principal LMI" ? (
                   <td className="px-2 py-3">{data.office}</td>
                 ) : (
                   ``
@@ -54,8 +54,7 @@ const TableLargeDisplay = () => {
                 <td className="px-2 py-3">
                   <button
                     onClick={() => {
-                    
-                    addEditData(data)
+                      addEditData(data);
                       handleToggles("isPopUpEditUser");
                     }}
                     className="mr-2 text-gray-800 border-collapse border-2 border-gray-800 px-3 py-1"
