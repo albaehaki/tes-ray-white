@@ -28,15 +28,15 @@ const Header = ({ children }: { children: React.ReactNode }) => {
         {isSidebarOpen && (
           <div
             className={`fixed h-screen ${
-              isSidebarOpen ? `w-10/12 sm:w-2/12` : ``
-            } w-64 bg-gray-700 text-white`}
+              isSidebarOpen ? `w-10/12 sm:w-4/12 md:w-3/12 lg:w-2/12 ` : ``
+            }  bg-gray-700 text-white`}
           >
             <SideBarContent />
           </div>
         )}
         <header
           className={`flex justify-between fixed right-0  items-center p-4 bg-white text-gray-800 ${
-            isSidebarOpen ? `w-2/12 sm:w-10/12` : `w-full`
+            isSidebarOpen ? `w-2/12 sm:w-8/12 md:w-9/12 lg:w-10/12` : `w-full`
           }`}
         >
           <div className="flex items-center">
@@ -79,8 +79,8 @@ const Header = ({ children }: { children: React.ReactNode }) => {
           {/* Add any additional elements you need */}
         </header>
       </div>
-      <div className={` absolute z-[-1] right-0  items-center p-4  text-gray-800 ${
-            isSidebarOpen ? `w-2/12 sm:w-10/12` : `w-full`
+      <div className={`absolute z-[-1] right-0  items-center p-4 mt-[60px] bg-gray-100  text-gray-800 ${
+            isSidebarOpen ? `relative md:absolute w-2/12 sm:w-8/12 md:w-9/12 lg:w-10/12` : `w-full`
           }`}>
         {children}
       </div>

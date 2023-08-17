@@ -3,7 +3,7 @@ import { UserCircleIcon, HomeIcon, InboxIcon, BookmarkIcon, DocumentTextIcon, Ch
 
 const ContentSidebar: React.FC = () => {
   return (
-    <div className="flex flex-col bg-gray-800 text-white h-screen overflow-y-auto">
+    <div className="flex flex-col bg-gray-800 text-white h-screen">
       {/* Profile */}
       <div className="flex flex-col  space-y-2 p-6">
         <div className="w-24 h-24  bg-gray-700 flex items-center justify-center">
@@ -29,11 +29,11 @@ const ContentSidebar: React.FC = () => {
             <span className="text-xs ">News</span>
             <ChevronDownIcon className="w-6 h-6 justify-self-end absolute right-3" />
           </li>
-          <li className="flex items-center space-x-2 relative py-3 px-14">
+          {/* <li className="flex items-center space-x-2 relative py-3 px-14">
             
             <span className="text-xs ">Add News</span>
             
-          </li>
+          </li> */}
           
         </ul>
       </div>
