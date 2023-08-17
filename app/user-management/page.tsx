@@ -12,6 +12,7 @@ import {
 
 // store
 import useHandleStore from "@/store/handleStore";
+import useTableStore from "@/store/tableStore";
 import { dummyCategoryUser } from "@/store/dummyDaya";
 
 // components
@@ -25,10 +26,14 @@ import Pagination from "@/components/pagination";
 const App: React.FC = () => {
   const { isPopUpEditUser } = useHandleStore((state) => state);
   const handleToggles = useHandleStore((state) => state.handleToggles);
+  const addEditData = useTableStore((state) => state.addEditData);
   return (
     <>
       <div className="flex pb-10 justify-end bg-gray-100">
-        <button onClick={() => {handleToggles("isPopUpEditUser")}} className="py-2 px-4 flex items-center bg-slate-800 text-white">
+        <button onClick={() => {
+          addEditData(null)
+          handleToggles("isPopUpEditUser")
+          }} className="py-2 px-4 flex items-center bg-slate-800 text-white">
           <UserPlusIcon className="w-6 h-6  mr-2 stroke-current" />
           Add User
         </button>
