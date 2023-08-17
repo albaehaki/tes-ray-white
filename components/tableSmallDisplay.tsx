@@ -2,12 +2,7 @@ import React from "react";
 
 // icons
 import {
-  MagnifyingGlassCircleIcon,
-  MagnifyingGlassIcon,
-  UserPlusIcon,
-  FunnelIcon,
-  ChevronRightIcon,
-  ChevronLeftIcon,
+ 
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 

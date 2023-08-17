@@ -14,7 +14,6 @@ const Header = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className="flex w-full">
-        {/* Sidebar */}
         {isSideBarOpen && (
           <div
             className={`${isPopUpEditUser? `absolute` : `fixed`} h-screen ${

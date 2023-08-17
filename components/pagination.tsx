@@ -19,7 +19,7 @@ const Pagination = () => {
           <select className="p-1 border-2 rounded-md shadow-sm border-gray-800">
             <option>1</option>
             <option>2</option>
-            {/* ... more page options */}
+           
           </select>
           <div className="flex border-l-2 border-gray-800 ml-3">
             <button className="mr-2 ml-3 border-2 rounded-md shadow-sm border-gray-300 text-gray-300">

@@ -12,10 +12,11 @@ import {
   PowerIcon,
 } from "@heroicons/react/24/solid";
 
-const Popup = ({ isOpen, onClose }: any) => {
+const Popup = () => {
   const { isPopUpEditUser } = useHandleStore((state) => state);
   const handleToggles = useHandleStore((state) => state.handleToggles);
   const editData = useTableStore((state) => state.editData);
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -36,9 +37,9 @@ const Popup = ({ isOpen, onClose }: any) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Lakukan sesuatu dengan data yang diisi di form
+    
     console.log(formData);
-    handleToggles("isPopUpEditUser"); // Tutup popup setelah submit
+    handleToggles("isPopUpEditUser");    
   };
 
   if (!isPopUpEditUser) {
@@ -82,7 +83,7 @@ const Popup = ({ isOpen, onClose }: any) => {
             <select className="border rounded-md px-2 py-1 w-full">
               <option>1</option>
               <option>2</option>
-              {/* ... more page options */}
+              
             </select>
           </div>
           {/* office */}
@@ -93,7 +94,7 @@ const Popup = ({ isOpen, onClose }: any) => {
             <select className="border rounded-md px-2 py-1 w-full">
               <option>1</option>
               <option>2</option>
-              {/* ... more page options */}
+              
             </select>
           </div>
           {/* phone */}
@@ -136,7 +137,7 @@ const Popup = ({ isOpen, onClose }: any) => {
             </select>
           </div>
 
-          {/* Tambahkan input lain sesuai kebutuhan */}
+        
           <div className="flex justify-evenly mt-4">
           {editData !== null ? (<button
               type="button"

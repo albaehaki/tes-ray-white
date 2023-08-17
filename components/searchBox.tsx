@@ -17,7 +17,7 @@ const SearchBox = () => {
           <input
             type="text"
             className="w-full p-2 border rounded-md shadow-sm"
-            // placeholder={<MagnifyingGlassCircleIcon className="w-5 h-5" />}
+            
           />
           <div className="absolute inset-y-3 left-3 pl-2 flex items-center pointer-events-none">
             <MagnifyingGlassIcon className="w-5 h-5 text-gray-400" />

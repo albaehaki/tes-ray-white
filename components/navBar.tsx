@@ -59,7 +59,7 @@ const NavBar = () => {
             </button>
           </div>
 
-          {/* Add any additional elements you need */}
+          
         </header>
   )
 }

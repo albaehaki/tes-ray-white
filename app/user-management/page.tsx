@@ -1,14 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import {
-  MagnifyingGlassCircleIcon,
-  MagnifyingGlassIcon,
   UserPlusIcon,
-  FunnelIcon,
-  ChevronRightIcon,
-  ChevronLeftIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/outline";
+} from "@heroicons/react/24/solid";
 
 // store
 import useHandleStore from "@/store/handleStore";

@@ -3,7 +3,7 @@ import { UserCircleIcon, HomeIcon, InboxIcon, BookmarkIcon, DocumentTextIcon, Ch
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 
-const ContentSidebar: React.FC = () => {
+const ContentSidebar = () => {
   const pathname = usePathname()
   const listMenuItems = [
     {
@@ -59,7 +59,7 @@ const ContentSidebar: React.FC = () => {
       <div className="mt-5 px-6">
         <div className="bg-gray-700 p-4 rounded">
           <h3 className="text-lg font-semibold mb-2">Notes</h3>
-          <p>Your notes go here...</p>
+          <p></p>
         </div>
       </div>
     </div>
