@@ -1,10 +1,7 @@
 import React from "react";
 
 // icons
-import {
- 
-  ChevronDownIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 //   store
 import useHandleStore from "@/store/handleStore";
@@ -57,6 +54,15 @@ const TableSmallDisplay = () => {
                     categoryTable === "Principal LMI" ? (
                       <tr className="my-5">
                         <th className="text-left">Office </th>
+                        <td>:</td>
+                        <td>{data.office}</td>
+                      </tr>
+                    ) : null}
+                    {categoryTable === "Bank Officer" ||
+                    categoryTable === "Bank Admin" ||
+                    categoryTable === "Bank Principal" ? (
+                      <tr className="my-5">
+                        <th className="text-left">Bank </th>
                         <td>:</td>
                         <td>{data.office}</td>
                       </tr>

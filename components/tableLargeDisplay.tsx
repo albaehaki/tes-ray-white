@@ -26,6 +26,14 @@ const TableLargeDisplay = () => {
             ) : (
               ``
             )}
+
+            {categoryTable === "Bank Officer" ||
+            categoryTable === "Bank Admin" ||
+            categoryTable === "Bank Principal" ? (
+              <th className="px-2 py-3">Bank</th>
+            ) : (
+              ``
+            )}
             <th className="px-2 py-3">Phone</th>
             <th className="px-2 py-3">Email</th>
             <th className="px-2 py-3">Action</th>
@@ -45,6 +53,13 @@ const TableLargeDisplay = () => {
                 categoryTable === "Admin Office" ||
                 categoryTable === "Principal" ||
                 categoryTable === "Principal LMI" ? (
+                  <td className="px-2 py-3">{data.office}</td>
+                ) : (
+                  ``
+                )}
+                {categoryTable === "Bank Officer" ||
+                categoryTable === "Bank Admin" ||
+                categoryTable === "Bank Principal" ? (
                   <td className="px-2 py-3">{data.office}</td>
                 ) : (
                   ``
