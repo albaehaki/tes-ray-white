@@ -8,7 +8,7 @@ const DropDownFilter = () => {
     const {isDropDownFilter} = useHandleStore((state) => state)
   const handleToggles = useHandleStore((state) => state.handleToggles);
   return (
-    <div className="absolute top-10 mt-3 z-50 right-0 bg-white shadow-xl min-w-[250px] md:min-w-[300px]  max-h-200 overflow-y-auto rounded-md">
+    <div className="absolute top-10 mt-3 z-50 right-0 bg-white shadow-xl min-w-[250px] md:min-w-[300px]  max-h-[400px] overflow-y-auto rounded-md">
       <p className="py-3 px-4">Time Rage</p>
       <div className="flex justify-between items-center bg-slate-100 py-3 px-4">
         <button className="border-2 border-gray-800 py-1 px-3 text-xs rounded-md">
