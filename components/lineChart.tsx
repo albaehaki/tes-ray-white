@@ -1,4 +1,3 @@
-"use client"
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
@@ -9,10 +8,23 @@ interface LineChartProps {
 
 const LineChart: React.FC<LineChartProps> = ({ data, labels }) => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const chartInstanceRef = useRef<Chart | null>(null); // Referensi ke instance grafik
 
-  useEffect(() => {
-    if (chartRef.current) {
-      new Chart(chartRef.current, {
+  // ...
+useEffect(() => {
+  if (chartRef.current) {
+    if (chartInstanceRef.current) {
+      chartInstanceRef.current.destroy();
+    }
+
+    const canvas = chartRef.current;
+    const context = canvas.getContext('2d');
+
+    // Periksa null sebelum menggunakan context
+    if (context) {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+      const newChart = new Chart(canvas, {
         type: 'line',
         data: {
           labels: labels,
@@ -20,7 +32,7 @@ const LineChart: React.FC<LineChartProps> = ({ data, labels }) => {
             {
               label: '',
               data: data,
-              borderColor: '',
+              borderColor: 'green',
               fill: false,
               pointRadius: 0,
               cubicInterpolationMode: 'monotone',
@@ -28,22 +40,33 @@ const LineChart: React.FC<LineChartProps> = ({ data, labels }) => {
           ],
         },
         options: {
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
           responsive: true,
           maintainAspectRatio: false,
           scales: {
             x: {
-              display: false, // Menyembunyikan sumbu X
+              display: false,
             },
             y: {
-              display: false, // Menyembunyikan sumbu Y
+              display: false,
             },
           },
         },
       });
-    }
-  }, [data, labels]);
 
-  return <canvas ref={chartRef} />;
+      chartInstanceRef.current = newChart;
+    }
+  }
+}, [data, labels]);
+// ...
+
+
+  return <canvas className='w-1/2' ref={chartRef} />;
 };
+
 
 export default LineChart;
