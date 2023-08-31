@@ -6,7 +6,8 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 //   store
 import useHandleStore from "@/store/handleStore";
 import useTableStore from "@/store/tableStore";
-import { dummyCategoryUser, dummyDataTable } from "@/store/dummyDaya";
+import { dummyCategoryUser, dummyDataTable, dummyHeadTableNews, dummyHeadTableUSer1, dummyHeadTableUSer2, dummyHeadTableUSer3  } from "@/store/dummyDaya";
+
 
 // hooks
 import handleHooks from "@/hooks/handleHooks";
@@ -18,15 +19,33 @@ const TableSmallDisplay = () => {
   const updateId = useTableStore((state) => state.updateId);
   const addEditData = useTableStore((state) => state.addEditData);
 
+  const allowedCategories1 = [
+    "Author", "Super Admin", "BDE", "Customer"
+  ];
+  const allowedCategories2 = [
+    "Advisor", "Admin Office", "Principal", "Principal LMI",
+  ];
+  const allowedCategories3 = [
+    "Bank Officer", "Bank Admin", "Bank Principal"
+  ];
+  const allowedCategoriesNews = [
+    "NewsList",
+    "Darft"
+  ];
+
+const dataHeader: any = allowedCategoriesNews.includes(categoryTable)? dummyHeadTableNews : allowedCategories1.includes(categoryTable) ? dummyHeadTableUSer1 : allowedCategories2.includes(categoryTable) ? dummyHeadTableUSer2 : allowedCategories3.includes(categoryTable)? dummyHeadTableUSer3 : []
+
+  const DataTable = dummyDataTable
+
   const { handleDropDownTables } = handleHooks();
   return (
     <>
-      {dummyDataTable
+      {DataTable
         .filter((data: any) => data.category == categoryTable)
         .map((data: any, i: number) => (
-          <div className="relative w-full min-w-full block md:hidden py-2">
+          <div key={i} className="relative w-full min-w-full block md:hidden py-2">
             <button
-              key={i}
+              
               onClick={() => {
                 updateId(data.id);
                 handleToggles("isDropDownTable");
@@ -39,7 +58,7 @@ const TableSmallDisplay = () => {
               <span className="text-sm ">{data.name}</span>
               <ChevronDownIcon className="w-6 h-6 justify-self-end absolute right-3" />
             </button>
-            {isDropDownTable && data.id === idDetail ? (
+            {/* {isDropDownTable && data.id === idDetail ? (
               <div className="relative right-0 mt-0 bg-white border rounded-b-md border-gray-300 w-full">
                 <table className="table-auto w-full mx-3 my-2">
                   <tbody>
@@ -100,7 +119,44 @@ const TableSmallDisplay = () => {
               </div>
             ) : (
               ``
-            )}
+            )} */}
+           
+{isDropDownTable && data.id === idDetail ? (
+  <div className="relative right-0 mt-0 bg-white border rounded-b-md border-gray-300 w-full">
+    <table className="table-auto w-full mx-3 my-2">
+      <tbody>
+        {dataHeader.map((header: string, index: number) => (
+          <tr className="my-5" key={index}>
+            <th className="text-left">{header}</th>
+            <td>:</td>
+            <td>{data[index]}</td>
+          </tr>
+        ))}
+        <tr className="my-5">
+          <th className="text-left">Action </th>
+          <td>:</td>
+          <td>
+            <button
+              onClick={() => {
+                addEditData(data);
+                handleToggles("isPopUpEditUser");
+              }}
+              className="mr-2 text-gray-800 border-collapse border-2 border-gray-800 px-3 py-1"
+            >
+              Edit
+            </button>
+            <button className="text-white px-3 py-1 bg-red-500 ">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+) : (
+  ``
+)}
+
           </div>
         ))}
     </>

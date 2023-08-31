@@ -37,7 +37,7 @@ const App: React.FC = () => {
         <div className="flex flex-col items-center">
           <div className="w-full lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm px-5 mt-8">
             <SearchBox />
-            <MenuTable />
+            <MenuTable data={dummyCategoryUser} />
             <TableLargeDisplay />
             {/* table smartphone view */}
             <TableSmallDisplay />

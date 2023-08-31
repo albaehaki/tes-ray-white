@@ -3,13 +3,17 @@ import React, { use } from "react";
 import useTableStore from "@/store/tableStore";
 import { dummyCategoryUser } from "@/store/dummyDaya";
 
-const MenuTable = () => {   
+interface MenuTable {
+  data: string[]
+}
+
+const MenuTable = ({data}: MenuTable) => {   
     const category = useTableStore((state) => state.categoryTable)
   const addCategory = useTableStore((state) => state.choiceCategoryTable);
   return (
     <div className="overflow-x-auto">
       <div className="flex space-x-4  mb-5 border-b-2 ">
-        {dummyCategoryUser.map((name: any, i: number) => (
+        {data.map((name: any, i: number) => (
           <button
           key={i}
             onClick={() => {

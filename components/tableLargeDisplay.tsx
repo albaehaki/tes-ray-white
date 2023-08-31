@@ -5,18 +5,41 @@ import React from "react";
 // store
 import useHandleStore from "@/store/handleStore";
 import useTableStore from "@/store/tableStore";
-import { dummyCategoryUser, dummyDataTable } from "@/store/dummyDaya";
+import { dummyCategoryUser, dummyDataTable, dummyHeadTableNews, dummyHeadTableUSer1, dummyHeadTableUSer2, dummyHeadTableUSer3  } from "@/store/dummyDaya";
+
+
 
 const TableLargeDisplay = () => {
   const handleToggles = useHandleStore((state) => state.handleToggles);
   const { categoryTable } = useTableStore((state) => state);
   const addEditData = useTableStore((state) => state.addEditData);
+
+  const allowedCategories1 = [
+    "Author", "Super Admin", "BDE", "Customer"
+  ];
+  const allowedCategories2 = [
+    "Advisor", "Admin Office", "Principal", "Principal LMI",
+  ];
+  const allowedCategories3 = [
+    "Bank Officer", "Bank Admin", "Bank Principal"
+  ];
+  const allowedCategoriesNews = [
+    "NewsList",
+    "Darft"
+  ];
+
+const data: any = allowedCategoriesNews.includes(categoryTable)? dummyHeadTableNews : allowedCategories1.includes(categoryTable) ? dummyHeadTableUSer1 : allowedCategories2.includes(categoryTable) ? dummyHeadTableUSer2 : allowedCategories3.includes(categoryTable)? dummyHeadTableUSer3 : []
+
+console.log(data)
   return (
     <div className=" hidden sm:block">
       <table className="min-w-full border ">
         <thead className="bg-slate-800 text-white text-left">
           <tr>
-            <th className="px-2 py-3">No</th>
+          {data?.map((name: string, i: number) => (
+            <th key={i} className="px-2 py-3">{name}</th>
+          ))}
+            {/* <th className="px-2 py-3">No</th>
             <th className="px-2 py-3">Name</th>
             {categoryTable === "Advisor" ||
             categoryTable === "Admin Office" ||
@@ -36,7 +59,7 @@ const TableLargeDisplay = () => {
             )}
             <th className="px-2 py-3">Phone</th>
             <th className="px-2 py-3">Email</th>
-            <th className="px-2 py-3">Action</th>
+            <th className="px-2 py-3">Action</th> */}
           </tr>
         </thead>
         {dummyDataTable

@@ -11,7 +11,7 @@ import ProgressBar from "@/components/progressBar";
 import CardChart from "@/components/cardChart";
 
 const Page = () => {
-  const styleGrid = `grid gap-5 grid-cols-3 md:grid-cols-1 pb-5`;
+  const styleGrid = `grid gap-5 grid-cols-3 lg:grid-cols-1 pb-5`;
 
   return (
     <>
@@ -24,11 +24,11 @@ const Page = () => {
           Go To CRM
         </button>
       </div>
-      <div className="grid md:grid-cols-7 grid-cols-1 gap-5 pt-5">
+      <div className="grid lg:grid-cols-7 grid-cols-1 gap-5 pt-5">
         <Card1 />
         <Card1 />
         <Card1 />
-        <div className="md:col-span-4  md:grid grid-cols-3 gap-5">
+        <div className="lg:col-span-4  lg:grid grid-cols-3 gap-5">
           <div className={`${styleGrid} `}>
             <Card2 />
             <Card2 />
@@ -53,12 +53,12 @@ const Page = () => {
         </div>
       </div>
       <div className="bg-white mt-5 w-auto min-h-[100px] rounded-lg pb-5">
-        <div className="grid grid-cols-3 gap-5 p-5">
+        <div className="grid lg:grid-cols-3 gap-5 p-5">
           <CardChart />
           <CardChart />
           <CardChart />
         </div>
-        <div className="grid grid-cols-2">
+        <div className="grid lg:grid-cols-2">
           <ProgressBar />
           <ProgressBar />
           <ProgressBar />

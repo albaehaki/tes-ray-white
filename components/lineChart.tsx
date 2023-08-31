@@ -1,3 +1,78 @@
+// import React, { useEffect, useRef } from 'react';
+// import Chart from 'chart.js/auto';
+
+// interface LineChartProps {
+//   data: number[];
+//   labels: string[];
+// }
+
+// const LineChart: React.FC<LineChartProps> = ({ data, labels }) => {
+//   const chartRef = useRef<HTMLCanvasElement | null>(null);
+//   const chartInstanceRef = useRef<Chart | null>(null); // Referensi ke instance grafik
+
+//   // ...
+// useEffect(() => {
+//   if (chartRef.current) {
+//     if (chartInstanceRef.current) {
+//       chartInstanceRef.current.destroy();
+//     }
+
+//     const canvas = chartRef.current;
+//     const context = canvas.getContext('2d');
+
+//     // Periksa null sebelum menggunakan context
+//     if (context) {
+//       context.clearRect(0, 0, canvas.width, canvas.height);
+
+//       const newChart = new Chart(canvas, {
+//         type: 'line',
+//         data: {
+//           labels: labels,
+//           datasets: [
+//             {
+//               label: '',
+//               data: data,
+//               borderColor: 'green',
+//               fill: false,
+//               pointRadius: 0,
+//               cubicInterpolationMode: 'monotone',
+//             },
+//           ],
+//         },
+//         options: {
+//           plugins: {
+//             legend: {
+//               display: false
+//             }
+//           },
+//           responsive: true,
+//           maintainAspectRatio: false,
+//           scales: {
+//             x: {
+//               display: false,
+//             },
+//             y: {
+//               display: false,
+//             },
+//           },
+//         },
+//       });
+
+//       chartInstanceRef.current = newChart;
+//     }
+//   }
+// }, [data, labels]);
+// // ...
+
+
+//   return <canvas className='w-1/2' ref={chartRef} />;
+// };
+
+
+// export default LineChart;
+
+
+
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
@@ -8,65 +83,60 @@ interface LineChartProps {
 
 const LineChart: React.FC<LineChartProps> = ({ data, labels }) => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
-  const chartInstanceRef = useRef<Chart | null>(null); // Referensi ke instance grafik
+  const chartInstanceRef = useRef<Chart | null>(null);
 
-  // ...
-useEffect(() => {
-  if (chartRef.current) {
-    if (chartInstanceRef.current) {
-      chartInstanceRef.current.destroy();
-    }
+  useEffect(() => {
+    if (chartRef.current) {
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+      }
 
-    const canvas = chartRef.current;
-    const context = canvas.getContext('2d');
+      const canvas = chartRef.current;
+      const context = canvas.getContext('2d');
 
-    // Periksa null sebelum menggunakan context
-    if (context) {
-      context.clearRect(0, 0, canvas.width, canvas.height);
+      if (context) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
-      const newChart = new Chart(canvas, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: '',
-              data: data,
-              borderColor: 'green',
-              fill: false,
-              pointRadius: 0,
-              cubicInterpolationMode: 'monotone',
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: {
-              display: false
-            }
+        const newChart = new Chart(canvas, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: '',
+                data: data,
+                borderColor: 'green',
+                fill: false,
+                pointRadius: 0,
+                cubicInterpolationMode: 'monotone',
+              },
+            ],
           },
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            x: {
-              display: false,
+          options: {
+            plugins: {
+              legend: {
+                display: false
+              }
             },
-            y: {
-              display: false,
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                display: false,
+              },
+              y: {
+                display: false,
+              },
             },
           },
-        },
-      });
+        });
 
-      chartInstanceRef.current = newChart;
+        chartInstanceRef.current = newChart;
+      }
     }
-  }
-}, [data, labels]);
-// ...
+  }, [data, labels]);
 
-
-  return <canvas className='w-1/2' ref={chartRef} />;
+  return <canvas className='w-[100px]' ref={chartRef} />;
 };
-
 
 export default LineChart;

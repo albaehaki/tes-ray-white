@@ -1,5 +1,5 @@
-export const dummyCategoryUser: any = [
-  "Customers",
+export const dummyCategoryUser: string[] = [
+  "Customer",
   "Author",
   "Super Admin",
   "BDE",
@@ -11,13 +11,47 @@ export const dummyCategoryUser: any = [
   "Bank Admin",
   "Bank Principal",
 ];
+export const dummyCategoryNews: string[] = [
+  "NewsList",
+  "Darft",
+];
+export const dummyHeadTableNews: string[] = [
+  "No.",
+  "Type",
+  "Title",
+  "Publish",
+  "Action",
+];
+export const dummyHeadTableUSer1: string[] = [
+  "No.",
+  "Name",
+  "Phone",
+  "Email",
+  "Action",
+];
+export const dummyHeadTableUSer2: string[] = [
+  "No.",
+  "Name",
+  "Office",
+  "Phone",
+  "Email",
+  "Action",
+];
+export const dummyHeadTableUSer3: string[] = [
+  "No.",
+  "Name",
+  "Bank",
+  "Phone",
+  "Email",
+  "Action",
+];
 export const dummyDataTable: any = [
   {
     id: 1,
     name: "Dummy",
     email: "email",
     phone: +628238830283,
-    category: "Customers",
+    category: "Customer",
     office: "default",
     status: true,
   },
@@ -26,7 +60,7 @@ export const dummyDataTable: any = [
     name: "Dmmy",
     email: "email",
     phone: +628238830283,
-    category: "Customers",
+    category: "Customer",
     office: "default",
     status: true,
   },

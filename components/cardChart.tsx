@@ -11,7 +11,7 @@ const CardChart = () => {
           <div className="flex justify-between border-l-2 rounded-xl border-green-800 h-16 gap-10">
             <div className="text-left ml-5">
               <p className="text-xl font-semibold mt-2">nama</p>
-              <p className="text-gray-500">9238479723</p>
+              <p className="text-gray-500 text-sm">9238479723</p>
             </div>
             <div className="p-3">
               <LineChart data={chartData} labels={chartLabels} />

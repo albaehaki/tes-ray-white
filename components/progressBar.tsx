@@ -5,7 +5,7 @@ import { UserCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
 
 const ProgressBar = () => {
   return (
-    <div className="pl-10 ">
+    <div className="px-5 py-3 ">
       <div className="flex justify-between">
         <div className="flex gap-5">
           <XCircleIcon className="w-6 h-6" />
