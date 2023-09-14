@@ -1,32 +1,50 @@
-import React from 'react';
-import { UserCircleIcon, HomeIcon, InboxIcon, BookmarkIcon, DocumentTextIcon, ChevronDownIcon, UserGroupIcon } from "@heroicons/react/24/outline";
-import Link from 'next/link';
-import { usePathname } from 'next/navigation'
+import React from "react";
+import {
+  UserCircleIcon,
+  HomeIcon,
+  InboxIcon,
+  BookmarkIcon,
+  DocumentTextIcon,
+  ChevronDownIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import useHandleStore from "@/store/handleStore";
 
 const ContentSidebar = () => {
-  const pathname = usePathname()
+  const { isSubMenuOpen, handleToggles } = useHandleStore((state) => state);
+  const pathname = usePathname();
   const listMenuItems = [
     {
       id: 1,
-      name: 'Dasboard',
+      name: "Dasboard",
       link: "/dasboard",
-      icon: <HomeIcon className="w-6 h-6" />
+      icon: <HomeIcon className="w-6 h-6" />,
     },
     {
       id: 2,
-      name: 'User Management',
+      name: "User Management",
       link: "/user-management",
-      icon: <UserGroupIcon className="w-6 h-6" />
+      icon: <UserGroupIcon className="w-6 h-6" />,
     },
     {
       id: 3,
-      name: 'News',
+      name: "News",
       link: "/news",
       icon: <DocumentTextIcon className="w-6 h-6" />,
-      icon2: <ChevronDownIcon className="w-6 h-6 justify-self-end absolute right-3" />
+      icon2: (
+        <ChevronDownIcon className="w-6 h-6 justify-self-end absolute right-3" />
+      ),
+      subMenu: {
+        id: 31,
+        name: "Add News",
+        link: "/news/add-news",
+        icon: <DocumentTextIcon className="w-6 h-6" />,
+      },
     },
   ];
-  console.log(pathname)
+  console.log(pathname);
   return (
     <div className="flex flex-col bg-gray-800 text-white h-screen">
       {/* Profile */}
@@ -40,18 +58,58 @@ const ContentSidebar = () => {
 
       {/* Menu List */}
       <div className="mt-8">
-        <ul className="space-y-2">
-          {listMenuItems.map((item: any) =>(<><Link href={item.link} className={`flex items-center space-x-2 py-3 px-6 ${pathname === item.link? `bg-gray-900 border-l-4 border-[#fcffe0]` : ``}`}>
-            {item.icon}
-            <span className="text-xs">{item.name}</span>
-            {item.icon2}
-          </Link></>))}
+        <ul className="">
+          {listMenuItems.map((item: any) => (
+            <>
+              <div
+                className={`flex align-middle items-center space-x-2 py-3 px-6 ${
+                  pathname === item.link
+                    ? `bg-gray-900 border-l-4 border-[#fcffe0]`
+                    : ``
+                }`}
+              >
+                {/* <Link
+                href={item.link}
+                className={`flex items-center space-x-2 py-3 px-6 ${
+                  pathname === item.link
+                    ? `bg-gray-900 border-l-4 border-[#fcffe0]`
+                    : ``
+                }`}
+              > */}
+                {item.icon}
+                <Link href={item.link} className="text-xs w-full">
+                  {item.name}
+                </Link>
+                <div
+                  className="items-center -mt-5"
+                  onClick={() => {
+                    handleToggles("isSubMenuOpen");
+                  }}
+                >
+                  {item.icon2}
+                </div>
+              </div>
+              {isSubMenuOpen && item.subMenu ? (
+                <div className={`pl-14 py-2 ${isSubMenuOpen && item.subMenu.name === "Add News" ? "" : ''} ${
+                  pathname === item.subMenu.link
+                    ? `bg-gray-900 border-l-4 border-[#fcffe0]`
+                    : ``
+                }`}>
+                  <Link href={item.subMenu.link} className="text-xs">
+                    {item.subMenu.name}
+                  </Link>
+                  {/* {item.subMenu.name} */}
+                </div>
+              ) : (
+                ""
+              )}
+            </>
+          ))}
           {/* <li className="flex items-center space-x-2 relative py-3 px-14">
             
             <span className="text-xs ">Add News</span>
             
           </li> */}
-          
         </ul>
       </div>
 

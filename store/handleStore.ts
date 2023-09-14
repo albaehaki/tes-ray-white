@@ -8,11 +8,11 @@ interface HandleState {
     isDropDownTable: boolean,
     isDropDownPagination: boolean,
     isDropDownFilter: boolean,
+    isSubMenuOpen: boolean,
   handleToggles: (data: any) => void
 }
 
 const useHandleStore = create<HandleState>()((set) => ({
- 
     isSideBarOpen: false,
     isPopUpAddUser: false,
     isPopUpEditUser: false,
@@ -20,7 +20,7 @@ const useHandleStore = create<HandleState>()((set) => ({
     isDropDownTable: false,
     isDropDownPagination: false,
     isDropDownFilter: false,
-
+    isSubMenuOpen: false,
   handleToggles: (data) => { switch (data) {
     case "isSideBarOpen":
         set((state) => ({ isSideBarOpen: !state.isSideBarOpen }))
@@ -42,6 +42,9 @@ const useHandleStore = create<HandleState>()((set) => ({
         break;
     case "isDropDownFilter":
         set((state) => ({ isDropDownFilter: !state.isDropDownFilter }))
+        break;
+    case "isSubMenuOpen":
+        set((state) => ({ isSubMenuOpen: !state.isSubMenuOpen }))
         break;
     default:
         break;
