@@ -157,7 +157,7 @@ const AddNews = () => {
       </div>
 
       {/* input teg */}
-      <div className="flex flex-wrap mb-3">
+      <div className="flex flex-wrap mb-3 border-2 border-gray-600  rounded-md">
         {tags.map((tag, index) => (
           <div
             key={index}
@@ -172,7 +172,7 @@ const AddNews = () => {
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleInputKeyDown}
-          className="border border-gray-300 rounded-md p-2"
+          className=" p-2 focus:outline-none bg-transparent"
         />
       </div>
       {/* Screadule Date */}
