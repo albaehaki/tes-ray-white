@@ -1,11 +1,17 @@
 "use client";
-import React, {useState} from "react";
-import ReactQuill from "react-quill";
+import React, { useState, useMemo } from "react";
+// import ReactQuill from "react-quill";
+// const ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
+import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
 const AddNews = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -149,7 +155,7 @@ const AddNews = () => {
           }}
         />
       </div>
-      
+
       {/* input teg */}
       <div className="flex flex-wrap mb-3">
         {tags.map((tag, index) => (
@@ -168,6 +174,73 @@ const AddNews = () => {
           onKeyDown={handleInputKeyDown}
           className="border border-gray-300 rounded-md p-2"
         />
+      </div>
+      {/* Screadule Date */}
+      <div className="flex w-full gap-5">
+      <div className="mb-4 w-full">
+        <label
+          htmlFor="scheduleDate"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Schedule Date
+        </label>
+        <input
+          type="date"
+          id="scheduleDate"
+          name="scheduleDate"
+          // value={scheduleDate}
+          // onChange={handleScheduleChange}
+          className="w-full border-gray-300 rounded-md p-2"
+          required
+        />
+      </div>
+      <div className="mb-4 w-full">
+        <label
+          htmlFor="startTime"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Start Time
+        </label>
+        <input
+          type="time"
+          id="startTime"
+          name="startTime"
+          // value={startTime}
+          // onChange={handleStartTimeChange}
+          className="w-full border-gray-300 rounded-md p-2"
+          required
+        />
+      </div>
+      </div>
+
+      {/* Input Status */}
+      <div className="mb-3">
+        <label htmlFor="name" className="block font-medium">
+          Status
+        </label>
+        <input
+          type="text"
+          id="status"
+          name="status"
+          // value={editData !== null ? editData.name : formData.name}
+          // onChange={handleChange}
+          className="border rounded-md px-2 py-1 w-full"
+          placeholder="Choose the status"
+        />
+      </div>
+      <div className="mt-4 flex justify-end gap-5">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        >
+          Save as Draft
+        </button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        >
+          Submit
+        </button>
       </div>
     </div>
   );
