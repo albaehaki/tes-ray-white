@@ -1,20 +1,26 @@
-import React from 'react'
+import React, {FC} from 'react'
 
 // component
 import LineChart from './lineChart';
 
-const CardChart = () => {
-    const chartData = [10, 80, 50, 90, 70];
-  const chartLabels = ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5"];
+interface CardChartD {
+  name: string;
+  value: number;
+  dataChart: number[];
+  labels: string[];
+}
+
+const CardChart: FC<CardChartD> = ({dataChart, name, value, labels}) => {
+   
   return (
     
-          <div className="flex justify-between border-l-2 rounded-xl border-green-800 h-16 gap-10">
+          <div className={`flex justify-between border-l-2 rounded-xl h-16 gap-10 ${name === "Masuk" ? 'border-green-800' : name === "Keluar" ? "border-red-800" : 'border-yellow-800'}`}>
             <div className="text-left ml-5">
-              <p className="text-xl font-semibold mt-2">nama</p>
-              <p className="text-gray-500 text-sm">9238479723</p>
+              <p className="text-xl font-semibold mt-2">{name}</p>
+              <p className="text-gray-500 text-sm">{value}</p>
             </div>
             <div className="p-3">
-              <LineChart data={chartData} labels={chartLabels} />
+              <LineChart data={dataChart} labels={labels} name={name} />
             </div>
           </div>
   
